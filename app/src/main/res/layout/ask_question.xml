@@ -15,22 +15,33 @@
         <TextView
             android:id="@+id/display_ID"
             android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:textSize="20sp"
-            android:gravity="center"/>
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:textSize="80sp"
+            android:text="11"/>
+        <TextView
+            android:id="@+id/display_question"
+            android:layout_width="300dp"
+            android:layout_height="120dp"
+            android:gravity="center"
+            android:textSize="60sp"
+            android:text="question"/>
 
-        <Button
-            android:id="@+id/ask_question"
-            style="@style/ButtonStyle"
-            android:layout_marginTop="20dp"
-            android:text="Poll the Class" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/ask_question"
+        style="@style/ButtonStyle"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="Hello,World!" />
+        android:layout_marginTop="20dp"
+        android:text="Poll the Class"
+        android:onClick="pollTheClass"/>
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Hello,World!" />-->
 </RelativeLayout>
