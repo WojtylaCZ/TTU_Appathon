@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import ttu.ttu_appathon.R;
+
 public class JoinCourse extends AppCompatActivity {
 
     @Override
