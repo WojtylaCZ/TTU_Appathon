@@ -8,6 +8,7 @@ import android.widget.TextView;
 import ttu.ttu_appathon.R;
 
 public class AskQuestion extends AppCompatActivity {
+    TextView displayID;
 
     TextView coursePIN;
 
@@ -26,7 +27,6 @@ public class AskQuestion extends AppCompatActivity {
         coursePIN = (TextView) findViewById(R.id.coursePIN);
 
         coursePIN.setText(String.valueOf(tmp.getCoursePIN()));
-
 
     }
 }
