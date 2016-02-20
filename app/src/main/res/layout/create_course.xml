@@ -5,11 +5,11 @@
     android:orientation="vertical"
     android:gravity="center">
 
-        <EditText
+        <!--<EditText
             android:id="@+id/create_id"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:hint="Enter the Course ID" />
+            android:hint="Enter the Course ID" />-->
 
         <Button
             style="@style/ButtonStyle"

@@ -87,13 +87,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void teacherButton(View view) {
-//        Teacher teacher = new Teacher(MainActivity.this);
+        Intent createIntent = new Intent(this, CreateCourse.class);
 //        teacher.createCourseSurvey();
 //        teacher.createQuestion(1);
 //        int id_question = 1;
 //        teacher.getResponses(id_question);
 
-        Intent createIntent = new Intent(this, CreateCourse.class);
         MainActivity.this.startActivity(createIntent);
     }
 }
