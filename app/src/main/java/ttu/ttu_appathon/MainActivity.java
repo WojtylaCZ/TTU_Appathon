@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void studentButton(View view) {
         Intent intent = new Intent(this, JoinCourse.class);
+        MainActivity.this.startActivity(intent);
     }
 
     public void myClickHandler(View view) {

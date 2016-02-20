@@ -9,6 +9,7 @@ public class JoinCourse extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.join_course);
 
         Intent intent = getIntent();
     }
