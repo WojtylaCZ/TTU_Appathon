@@ -7,7 +7,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ttu3"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -21,7 +21,7 @@
         <activity android:name=".teacher.CreateCourse" />
         <activity android:name=".teacher.AskQuestion" />
         <activity android:name=".student.JoinCourse" />
-        <activity android:name=".student.Respond"></activity>
+        <activity android:name=".student.Respond" />
     </application>
 
 </manifest>
