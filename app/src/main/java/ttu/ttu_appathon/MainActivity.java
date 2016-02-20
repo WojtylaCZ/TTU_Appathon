@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import ttu.ttu_appathon.teacher.Teacher;
+
 public class MainActivity extends AppCompatActivity {
     Button selectTeacher;
 
@@ -17,9 +19,12 @@ public class MainActivity extends AppCompatActivity {
         selectTeacher = (Button) findViewById(R.id.select_teacher);
 
         selectTeacher.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Create course functionality!", Toast.LENGTH_LONG).show();
+                Teacher teacher = new Teacher();
+                teacher.connectToAndQueryDatabase("a","b");
+                Toast.makeText(MainActivity.this, "Create course functionality!" + String.valueOf(teacher.createCourseSurvey()), Toast.LENGTH_LONG).show();
 
             }
         });
