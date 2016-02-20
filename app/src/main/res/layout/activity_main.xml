@@ -14,6 +14,7 @@
     <Button
         android:id="@+id/select_teacher"
         style="@style/ButtonStyle"
+        android:onClick="teacherButton"
         android:text="Teacher" />
 
     <Button
