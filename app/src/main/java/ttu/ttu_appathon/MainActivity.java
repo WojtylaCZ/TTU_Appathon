@@ -1,6 +1,7 @@
 package ttu.ttu_appathon;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -22,7 +23,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
+import ttu.ttu_appathon.student.JoinCourse;
 import ttu.ttu_appathon.teacher.AsyncTaskTestActivity;
+import ttu.ttu_appathon.teacher.CreateCourse;
 import ttu.ttu_appathon.teacher.Teacher;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
                 myClickHandler(v);
             }
         });
+    }
+
+    public void studentButton(View view) {
+        Intent intent = new Intent(this, JoinCourse.class);
     }
 
     public void myClickHandler(View view) {
