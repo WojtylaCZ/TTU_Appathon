@@ -4,15 +4,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    Button createCourse;
+    Button selectTeacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        createCourse = (Button) findViewById(R.id.create_course);
+        selectTeacher = (Button) findViewById(R.id.select_teacher);
+
+        selectTeacher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Hello World!", Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 }
