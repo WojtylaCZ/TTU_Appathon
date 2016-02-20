@@ -35,12 +35,14 @@ public class AskQuestion extends AppCompatActivity {
 
     public void pollTheClass(View view) {
         tmp.getCourseId(PIN);
+        System.err.println("got course ID" + String.valueOf(tmp.coursePIN));
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         tmp.createQuestion();
+        System.err.println("question created");
 
         try {
             Thread.sleep(1000);
@@ -48,14 +50,15 @@ public class AskQuestion extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        tmp.getQuestionId();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        TextView tw =(TextView) findViewById(R.id.display_question);
-        tw.setText("Quest. with id "+tmp.questionId);
+//        tmp.getQuestionId();
+//        System.err.println("got question ID" + String.valueOf(tmp.questionId));
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        TextView tw =(TextView) findViewById(R.id.display_question);
+//        tw.setText("Quest. with id "+tmp.questionId);
 
 
 
