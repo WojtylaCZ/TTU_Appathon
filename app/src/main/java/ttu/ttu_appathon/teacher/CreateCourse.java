@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import ttu.ttu_appathon.R;
+
 public class CreateCourse extends AppCompatActivity {
 
 
@@ -12,10 +14,13 @@ public class CreateCourse extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = getIntent();
+        this.setContentView(R.layout.create_course);
+
+        Intent createIntent = getIntent();
     }
 
     public void createCourse(View view) {
-        Intent intent = new Intent(this, AskQuestion.class);
+        Intent askIntent = new Intent(this, AskQuestion.class);
+        CreateCourse.this.startActivity(askIntent);
     }
 }

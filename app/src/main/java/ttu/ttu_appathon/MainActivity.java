@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        selectTeacher = (Button) findViewById(R.id.select_teacher);
+//        selectTeacher = (Button) findViewById(R.id.select_teacher);
 
-        selectTeacher.setOnClickListener(new View.OnClickListener() {
+//        selectTeacher.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
+//            @Override
+//            public void onClick(View v) {
                 //##############################################
 //                Teacher teacher = new Teacher(MainActivity.this);
 //                teacher.createCourseSurvey();
@@ -66,15 +66,36 @@ public class MainActivity extends AppCompatActivity {
 //                student.addResponse(id_question, enumr);
                 //##############################################
 
-            }
-        });
+//            }
+//        });
     }
     public void studentButton(View view) {
+//        Student student = new Student(MainActivity.this);
+//
+//        int pin = 9206;
+//        student.logInToCourseSurvey(pin);
+//
+//        int question = 1;
+//        student.getCourseQuestions(question);
+//
+//        int enumr = 0;
+//        int id_question = 2;
+//        student.addResponse(id_question, enumr);
+
         Intent joinIntent = new Intent(this, JoinCourse.class);
         MainActivity.this.startActivity(joinIntent);
     }
 
+    public void teacherButton(View view) {
+//        Teacher teacher = new Teacher(MainActivity.this);
+//        teacher.createCourseSurvey();
+//        teacher.createQuestion(1);
+//        int id_question = 1;
+//        teacher.getResponses(id_question);
 
+        Intent createIntent = new Intent(this, CreateCourse.class);
+        MainActivity.this.startActivity(createIntent);
+    }
 }
 
 
