@@ -19,8 +19,6 @@
         <Button
             style="@style/ButtonStyle"
             android:id="@+id/join_course"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
             android:onClick="joinCourse"
             android:text="Join Course" />
     </LinearLayout>
