@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         Intent joinIntent = new Intent(this, JoinCourse.class);
         MainActivity.this.startActivity(joinIntent);
     }
+
+
 }
 
 
