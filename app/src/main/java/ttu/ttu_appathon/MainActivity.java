@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 //##############################################
-                Student student = new Student(MainActivity.this);
+//                Student student = new Student(MainActivity.this);
 
 //                int pin = 9206;
 //                student.logInToCourseSurvey(pin);
@@ -61,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
 //                int question = 1;
 //                student.getCourseQuestions(question);
 
-                int enumr = 0;
-                int id_question = 2;
-                student.addResponse(id_question, enumr);
+//                int enumr = 0;
+//                int id_question = 2;
+//                student.addResponse(id_question, enumr);
                 //##############################################
 
             }
