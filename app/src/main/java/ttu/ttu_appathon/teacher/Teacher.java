@@ -13,11 +13,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import ttu.ttu_appathon.MainActivity;
 import ttu.ttu_appathon.database.Course;
 import ttu.ttu_appathon.database.Question;
+import ttu.ttu_appathon.database.Response;
 import ttu.ttu_appathon.util.Util;
 
 /**
@@ -32,14 +34,51 @@ public class Teacher {
     Integer queryUpdate;
     boolean parseResponses = false;
     boolean parseCreateSurvey = false;
+    int count_yes = 0;
+    int count_no =0;
 
     private static Teacher teacher = new Teacher();
 
     Course course;
+    Question question;
+    ArrayList<Response> resposes = new ArrayList<Response>();
+
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
+    public ArrayList<Response> getResposes() {
+        return resposes;
+    }
+
+    public void setResposes(ArrayList<Response> resposes) {
+        this.resposes = resposes;
+    }
+
+    public int getCount_no() {
+        return count_no;
+    }
+
+    public void setCount_no(int count_no) {
+        this.count_no = count_no;
+    }
+
+    public int getCount_yes() {
+        return count_yes;
+    }
+
+    public void setCount_yes(int count_yes) {
+        this.count_yes = count_yes;
+    }
 
     /* A private Constructor prevents any other
-     * class from instantiating.
-     */
+                 * class from instantiating.
+                 */
     private Teacher() {
     }
 
@@ -51,6 +90,7 @@ public class Teacher {
     public void setCourse(Course course) {
         this.course = course;
     }
+
     public Course getCourse() {
         return this.course;
     }
@@ -66,7 +106,7 @@ public class Teacher {
             try {
                 Integer rs = task.execute("INSERT into courses (`id_course`,`pin`) VALUES(" + randomID + "," + randomPIN + ")").get();
                 if (rs == 1) {
-                    Course course = new Course(randomID,randomPIN);
+                    Course course = new Course(randomID, randomPIN);
                     return course;
                     //return randomID;
                 } else {
@@ -81,33 +121,91 @@ public class Teacher {
         }
         return null;
     }
+
     public Question createQuestion() {
 
+        int randomID = (int) (Math.random() * 90000) + 100;
+//
+        if (netCheck()) {
+            PrepareUpdate task = new PrepareUpdate();
+
+            try {
+                Integer rs = task.execute("INSERT into questions (`id_question`,`id_course`,`text`) VALUES(" + randomID + "," + this.getCourse().getId_course() + "," + Util.text + ")").get();
+                if (rs == 1) {
+                    Question question = new Question(randomID, this.getCourse().getId_course(), Util.text);
+                    return question;
+                    //return randomID;
+                } else {
+                    return null;
+                }
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
         return null;
-//        int randomPIN = (int) (Math.random() * 9000) + 1000;
-//        int randomID = (int) (Math.random() * 90000) + 100;
-//
-//        if (netCheck()) {
-//            PrepareUpdate task = new PrepareUpdate();
-//
-//            try {
-//                Integer rs = task.execute("INSERT into courses (`id_course`,`pin`) VALUES(" + randomID + "," + randomPIN + ")").get();
-//                if (rs == 1) {
-//                    Course course = new Course(randomID,randomPIN);
-//                    return course;
-//                    //return randomID;
-//                } else {
-//                    return null;
-//                }
-//
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            } catch (ExecutionException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return null;
     }
+
+    public boolean collectResponces() {
+
+        if (netCheck()) {
+            PrepareQuery task = new PrepareQuery();
+            try {
+                ResultSet rs = task.execute("SELECT * FROM responses WHERE id_question = " + this.getQuestion().getId_question()).get();
+                int sum = 0;
+                //yes == 1
+                int yess = 0;
+                while (rs.next()) {
+                    sum = sum +1;
+                    yess = yess+rs.getInt("enum");
+                }
+                this.count_yes = yess;
+                this.count_no = sum-yess;
+                return true;
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+
+    }
+
+
+    public boolean deleteQuestion(int id_question) {
+
+        if (netCheck()) {
+            PrepareUpdate task = new PrepareUpdate();
+
+            try {
+                Integer rs = task.execute("DELETE FROM questions where id_question="+id_question).get();
+                if (rs == 1) {
+                    rs = task.execute("DELETE FROM response where id_question="+id_question).get();
+                    if (rs == 1) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+
 
     public void createQuestion(int id_course) {
         if (netCheck()) {
@@ -116,14 +214,6 @@ public class Teacher {
             this.parseCreateSurvey = true;
         }
 
-    }
-
-    public void getResponses(int id_question) {
-        if (netCheck()) {
-            PrepareQuery task = new PrepareQuery();
-            task.execute("SELECT * FROM responses WHERE ID_QUESTION = " + String.valueOf(id_question));
-            this.parseResponses = true;
-        }
     }
 
     private boolean netCheck() {
@@ -138,7 +228,6 @@ public class Teacher {
         }
 
     }
-
 
 
     class PrepareQuery extends AsyncTask<String, Void, ResultSet> {

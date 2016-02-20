@@ -7,9 +7,9 @@ public class Question {
 
     int id_question;
     int id_course;
-    int text;
+    String text;
 
-    public Question(int id_question, int id_course, int text) {
+    public Question(int id_question, int id_course, String text) {
         this.id_question = id_question;
         this.id_course = id_course;
         this.text = text;
@@ -31,11 +31,11 @@ public class Question {
         this.id_course = id_course;
     }
 
-    public int getText() {
+    public String getText() {
         return text;
     }
 
-    public void setText(int text) {
+    public void setText(String text) {
         this.text = text;
     }
 

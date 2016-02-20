@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -31,12 +32,15 @@ import ttu.ttu_appathon.teacher.CreateCourse;
 import ttu.ttu_appathon.teacher.Teacher;
 
 public class MainActivity extends AppCompatActivity {
+    AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
     Button selectTeacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
 //        selectTeacher = (Button) findViewById(R.id.select_teacher);
 
@@ -87,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void teacherButton(View view) {
+        view.startAnimation(buttonClick);
+
         Intent createIntent = new Intent(this, CreateCourse.class);
 //        teacher.createCourseSurvey();
 //        teacher.createQuestion(1);

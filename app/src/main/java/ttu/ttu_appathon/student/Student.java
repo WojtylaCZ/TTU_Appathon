@@ -16,6 +16,8 @@ import java.sql.Statement;
 import java.util.concurrent.ExecutionException;
 
 import ttu.ttu_appathon.MainActivity;
+import ttu.ttu_appathon.database.Course;
+import ttu.ttu_appathon.database.Question;
 import ttu.ttu_appathon.util.Util;
 
 /**
@@ -29,6 +31,18 @@ public class Student {
     boolean parseCourseQuestions = false;
     boolean parseCreateResponse = false;
 
+    Course course;
+    Question question;
+
+    public int questionIdSeen;
+
+    public int getQuestionIdSeen() {
+        return questionIdSeen;
+    }
+
+    public void setQuestionIdSeen(int questionIdSeen) {
+        this.questionIdSeen = questionIdSeen;
+    }
 
     private static Student student = new Student();
 
@@ -52,7 +66,7 @@ public class Student {
             try {
                 ResultSet rs = task.execute("SELECT * FROM courses WHERE pin = " + String.valueOf(pin)).get();
                 while (rs.next()) {
-                    int ridc = rs.getInt("id_course");
+                    this.course = new Course(rs.getInt("id_course"),rs.getInt("pin"));
                     return true;
                 }
             } catch (InterruptedException e) {
@@ -62,27 +76,56 @@ public class Student {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-
-//            while(atask.getStatus() != AsyncTask.Status.FINISHED){
-//                try {
-//                    Thread.sleep(300);
-//                    Toast.makeText(activity, "sleep", Toast.LENGTH_LONG).show();
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//            Toast.makeText(activity, "done", Toast.LENGTH_LONG).show();
-//            Toast.makeText(activity, String.valueOf(ridc), Toast.LENGTH_LONG).show();
-
-
         }
         return false;
-//        if (coursePINinDB){
-//            return true;
-//        }else{
-//            return false;
-//        }
+    }
+
+    public Question checkForQuestion() {
+        if (netCheck()) {
+            PrepareQuery task = new PrepareQuery();
+            this.findCoursePIN = true;
+            try {
+                ResultSet rs = task.execute("SELECT * FROM questions WHERE id_course = " + String.valueOf(this.course.getId_course())).get();
+                while (rs.next()) {
+                    int idq = rs.getInt("id_question");
+                    int idc = rs.getInt("id_course");
+                    String idt = rs.getString("text");
+                    question = new Question(idq,idc,idt);
+                    return question;
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+    }
+
+
+    public boolean addResponse(int enumh) {
+
+        if (netCheck()) {
+            PrepareUpdate task = new PrepareUpdate();
+
+            try {
+                Integer rs = task.execute("INSERT into responses (`id_question`,`enum`) VALUES(" + this.question.getId_question() + "," + enumh + ")").get();
+                if (rs == 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
     }
 
     public int getCourseQuestions(int id_course) {
@@ -94,7 +137,7 @@ public class Student {
         return -1;
     }
 
-    public void addResponse(int id_question, int enumr) {
+    public void addResponsex(int id_question, int enumr) {
         if (netCheck()) {
             PrepareUpdate task = new PrepareUpdate();
             task.execute("INSERT into responses (`id_question`,`enum`) VALUES(" + id_question + ", " + enumr + ")");

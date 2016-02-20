@@ -10,7 +10,7 @@ public class Util {
     public static final String userName = "34259_test";
     public static final String password = "test";
 
-    public static final String text = "\"Did you understand this definition and the example\"";
+    public static final String text = "'Did you understand this definition and the example?'";
 
 
 }

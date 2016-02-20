@@ -24,11 +24,12 @@
         <TextView
             android:id="@+id/label_question"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Did you understand?"
-            android:textSize="30sp"
-            android:visibility="invisible"/>
+            android:text="Did you understand this definition and the example?"
+            android:textSize="32sp"
+            android:visibility="invisible"
+            />
 
     </LinearLayout>
 
