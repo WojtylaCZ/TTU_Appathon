@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
         <EditText
             android:id="@+id/join_id"
@@ -17,9 +12,8 @@
             android:hint="Enter the Course ID" />
 
         <Button
+            style="@style/ButtonStyle"
             android:id="@+id/join_course"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
+            android:onClick="joinCourse"
             android:text="Join Course" />
-    </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

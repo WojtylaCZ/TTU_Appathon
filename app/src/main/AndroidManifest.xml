@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".teacher.CreateCourse" />
         <activity android:name=".teacher.AskQuestion" />
-        <activity android:name=".student.JoinCourse"></activity>
+        <activity android:name=".student.JoinCourse" />
+        <activity android:name=".student.Respond"></activity>
     </application>
 
 </manifest>
