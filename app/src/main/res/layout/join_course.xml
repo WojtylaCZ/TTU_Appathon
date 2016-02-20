@@ -20,6 +20,7 @@
             android:id="@+id/join_course"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:text="Join Course" />
+            android:text="Join Course"
+            android:onClick="joinCourse"/>
     </LinearLayout>
 </RelativeLayout>
