@@ -10,6 +10,12 @@
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/create_id"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:hint="Enter the Course ID" />
+
         <Button
             android:id="@+id/create_course"
             android:layout_width="200dp"

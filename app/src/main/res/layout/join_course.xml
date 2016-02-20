@@ -14,7 +14,7 @@
             android:id="@+id/join_id"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:hint="Enter Course ID" />
+            android:hint="Enter the Course ID" />
 
         <Button
             android:id="@+id/join_course"
