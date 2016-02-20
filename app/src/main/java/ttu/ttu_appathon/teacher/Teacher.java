@@ -1,5 +1,6 @@
 package ttu.ttu_appathon.teacher;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -12,8 +13,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.concurrent.ExecutionException;
 
 import ttu.ttu_appathon.MainActivity;
+import ttu.ttu_appathon.database.Course;
+import ttu.ttu_appathon.database.Question;
 import ttu.ttu_appathon.util.Util;
 
 /**
@@ -22,25 +26,87 @@ import ttu.ttu_appathon.util.Util;
 public class Teacher {
 
 
-    MainActivity mainActivity;
+    Activity activity;
+
     ResultSet queryResult;
     Integer queryUpdate;
     boolean parseResponses = false;
     boolean parseCreateSurvey = false;
 
-    public Teacher(MainActivity mainActivity) {
-        this.mainActivity = mainActivity;
+    private static Teacher teacher = new Teacher();
+
+    Course course;
+
+    /* A private Constructor prevents any other
+     * class from instantiating.
+     */
+    private Teacher() {
     }
 
-    public void createCourseSurvey() {
+    /* Static 'instance' method */
+    public static Teacher getInstance() {
+        return teacher;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+    public Course getCourse() {
+        return this.course;
+    }
+
+    public Course createCourse() {
 
         int randomPIN = (int) (Math.random() * 9000) + 1000;
+        int randomID = (int) (Math.random() * 90000) + 100;
 
         if (netCheck()) {
             PrepareUpdate task = new PrepareUpdate();
-            task.execute("INSERT into courses (`pin`) VALUES(" + randomPIN + ")");
-            this.parseCreateSurvey = true;
+
+            try {
+                Integer rs = task.execute("INSERT into courses (`id_course`,`pin`) VALUES(" + randomID + "," + randomPIN + ")").get();
+                if (rs == 1) {
+                    Course course = new Course(randomID,randomPIN);
+                    return course;
+                    //return randomID;
+                } else {
+                    return null;
+                }
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
         }
+        return null;
+    }
+    public Question createQuestion() {
+
+        return null;
+//        int randomPIN = (int) (Math.random() * 9000) + 1000;
+//        int randomID = (int) (Math.random() * 90000) + 100;
+//
+//        if (netCheck()) {
+//            PrepareUpdate task = new PrepareUpdate();
+//
+//            try {
+//                Integer rs = task.execute("INSERT into courses (`id_course`,`pin`) VALUES(" + randomID + "," + randomPIN + ")").get();
+//                if (rs == 1) {
+//                    Course course = new Course(randomID,randomPIN);
+//                    return course;
+//                    //return randomID;
+//                } else {
+//                    return null;
+//                }
+//
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            } catch (ExecutionException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return null;
     }
 
     public void createQuestion(int id_course) {
@@ -61,17 +127,19 @@ public class Teacher {
     }
 
     private boolean netCheck() {
-        ConnectivityManager connMgr = (ConnectivityManager) mainActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connMgr = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
-            Toast.makeText(mainActivity, "ok!", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "ok!", Toast.LENGTH_LONG).show();
             return true;
         } else {
-            Toast.makeText(mainActivity, "connectivy issue", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "connectivy issue", Toast.LENGTH_LONG).show();
             return false;
         }
 
     }
+
+
 
     class PrepareQuery extends AsyncTask<String, Void, ResultSet> {
         @Override
@@ -99,7 +167,7 @@ public class Teacher {
                         int ridq = result.getInt("id_question");
                         int renum = result.getInt("enum");
                         response = response + String.valueOf(ridr) + String.valueOf(ridq) + String.valueOf(renum) + "\n";
-                        Toast.makeText(mainActivity, "Query done; " + response, Toast.LENGTH_LONG).show();
+                        Toast.makeText(activity, "Query done; " + response, Toast.LENGTH_LONG).show();
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -195,14 +263,6 @@ public class Teacher {
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(Integer result) {
-
-            if (parseCreateSurvey) {
-                if (result == 1) {
-                    Toast.makeText(mainActivity, "Query INSERTED; ", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(mainActivity, "Record NOT inserted", Toast.LENGTH_LONG).show();
-                }
-            }
         }
 
 

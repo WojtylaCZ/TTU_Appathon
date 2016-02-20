@@ -4,39 +4,109 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="5dp"
         android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/display_ID"
             android:layout_width="300dp"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="80sp"
-            android:text="11"/>
+            android:text="11"
+            android:textSize="40sp" />
+
         <TextView
-            android:id="@+id/display_question"
-            android:layout_width="300dp"
-            android:layout_height="120dp"
+            android:id="@+id/label_question"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:gravity="center"
-            android:textSize="60sp"
-            android:text="question"/>
+            android:text="Did you understand?"
+            android:textSize="30sp"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/ask_question"
+        android:id="@+id/button_start"
         style="@style/ButtonStyle"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="20dp"
+        android:onClick="pollTheClass"
         android:text="Poll the Class"
-        android:onClick="pollTheClass"/>
+        android:layout_marginBottom="85dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/label_yes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="78dp"
+        android:text="YES:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="invisible" />/>
+
+    <TextView
+        android:id="@+id/label_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_start"
+        android:layout_alignLeft="@+id/label_yes"
+        android:layout_alignStart="@+id/label_yes"
+        android:layout_marginBottom="84dp"
+        android:text="NO:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="invisible" />/>
+
+    <TextView
+        android:id="@+id/number_yes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/label_yes"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/number_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/number_yes"
+        android:layout_alignStart="@+id/number_yes"
+        android:layout_alignTop="@+id/label_no"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="invisible"/>
+
+    <Button
+        style="@style/ButtonStyle"
+        android:id="@+id/button_end"
+        android:onClick="endThePoll"
+        android:text="End the poll"
+        android:layout_marginBottom="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/button_start"
+        android:layout_alignEnd="@+id/button_start"
+        android:layout_alignLeft="@+id/button_start"
+        android:layout_alignStart="@+id/button_start"
+        android:visibility="invisible"/>
+
+
     <!--<TextView-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="wrap_content"-->
