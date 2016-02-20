@@ -14,8 +14,7 @@ public class JoinCourse extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.join_course);
+        this.setContentView(R.layout.join_course);
 
         Intent joinIntent = getIntent();
     }
