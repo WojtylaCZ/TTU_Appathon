@@ -63,16 +63,15 @@ public class MainActivity extends AppCompatActivity {
 
                 int enumr = 0;
                 int id_question = 2;
-                student.addResponse(id_question,enumr);
+                student.addResponse(id_question, enumr);
                 //##############################################
             }
         });
     }
-
     public void studentButton(View view) {
-        Intent intent = new Intent(this, JoinCourse.class);
+        Intent joinIntent = new Intent(this, JoinCourse.class);
+        MainActivity.this.startActivity(joinIntent);
     }
-
 }
 
 
