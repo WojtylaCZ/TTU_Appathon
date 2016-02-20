@@ -24,9 +24,8 @@ public class AskQuestion extends AppCompatActivity {
 
         tmp.createCourseSurvey(AskQuestion.this);
 
-        coursePIN = (TextView) findViewById(R.id.coursePIN);
+        coursePIN = (TextView) findViewById(R.id.display_ID);
 
         coursePIN.setText(String.valueOf(tmp.getCoursePIN()));
-
     }
 }
