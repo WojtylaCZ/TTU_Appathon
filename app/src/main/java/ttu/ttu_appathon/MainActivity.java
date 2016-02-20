@@ -25,6 +25,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import ttu.ttu_appathon.student.JoinCourse;
+import ttu.ttu_appathon.student.Student;
 import ttu.ttu_appathon.teacher.AsyncTaskTestActivity;
 import ttu.ttu_appathon.teacher.CreateCourse;
 import ttu.ttu_appathon.teacher.Teacher;
@@ -43,13 +44,27 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Teacher teacher = new Teacher(MainActivity.this);
+                //##############################################
+//                Teacher teacher = new Teacher(MainActivity.this);
 //                teacher.createCourseSurvey();
-                teacher.createQuestion(1);
-
+//                teacher.createQuestion(1);
 //                int id_question = 1;
 //                teacher.getResponses(id_question);
 
+
+                //##############################################
+                Student student = new Student(MainActivity.this);
+
+//                int pin = 9206;
+//                student.logInToCourseSurvey(pin);
+
+//                int question = 1;
+//                student.getCourseQuestions(question);
+
+                int enumr = 0;
+                int id_question = 2;
+                student.addResponse(id_question,enumr);
+                //##############################################
             }
         });
     }

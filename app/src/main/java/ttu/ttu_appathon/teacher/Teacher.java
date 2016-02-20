@@ -14,19 +14,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import ttu.ttu_appathon.MainActivity;
+import ttu.ttu_appathon.util.Util;
 
 /**
  * Created by wojtyla on 2/20/16.
  */
 public class Teacher {
 
-    final String urld = "jdbc:mysql://WH25.farma.gigaserver.cz:3306/";
-    final String dbName = "hbbtvcesko_cz_testing";
-    final String driver = "com.mysql.jdbc.Driver";
-    final String userName = "34259_test";
-    final String password = "test";
-
-    final String text = "\"Did you understand this definition and the example\"";
 
     MainActivity mainActivity;
     ResultSet queryResult;
@@ -52,7 +46,7 @@ public class Teacher {
     public void createQuestion(int id_course) {
         if (netCheck()) {
             PrepareUpdate task = new PrepareUpdate();
-            task.execute("INSERT into questions (`id_course`,`text`) VALUES(" + id_course + ", " + text + ")");
+            task.execute("INSERT into questions (`id_course`,`text`) VALUES(" + id_course + ", " + Util.text + ")");
             this.parseCreateSurvey = true;
         }
 
@@ -117,8 +111,8 @@ public class Teacher {
         private ResultSet query(String query) throws IOException {
             String response = "";
             try {
-                Class.forName(driver).newInstance();
-                Connection conn = DriverManager.getConnection(urld + dbName, userName, password);
+                Class.forName(Util.driver).newInstance();
+                Connection conn = DriverManager.getConnection(Util.urld + Util.dbName, Util.userName, Util.password);
                 Statement st = conn.createStatement();
                 ResultSet res = st.executeQuery(query);
                 conn.close();
@@ -216,8 +210,8 @@ public class Teacher {
 
             String response = "";
             try {
-                Class.forName(driver).newInstance();
-                Connection conn = DriverManager.getConnection(urld + dbName, userName, password);
+                Class.forName(Util.driver).newInstance();
+                Connection conn = DriverManager.getConnection(Util.urld + Util.dbName, Util.userName, Util.password);
                 Statement st = conn.createStatement();
                 int res = st.executeUpdate(query);
                 conn.close();
