@@ -68,12 +68,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     public void studentButton(View view) {
         Intent joinIntent = new Intent(this, JoinCourse.class);
         MainActivity.this.startActivity(joinIntent);
     }
 
-
+    public void teacherButton(View view) {
+        Intent createIntent = new Intent(this, CreateCourse.class);
+        MainActivity.this.startActivity(createIntent);
+    }
 }
 
 
