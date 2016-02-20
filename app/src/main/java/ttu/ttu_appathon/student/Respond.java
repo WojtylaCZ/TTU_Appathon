@@ -64,7 +64,7 @@ public class Respond extends AppCompatActivity {
                 button_no.setVisibility(View.VISIBLE);
                 student.setQuestionIdSeen(question.getId_question());
             } else {
-                Toast.makeText(Respond.this, "Question seeen. ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Respond.this, "Question seen. ", Toast.LENGTH_SHORT).show();
 
             }
 

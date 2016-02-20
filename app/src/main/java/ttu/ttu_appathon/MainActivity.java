@@ -32,7 +32,7 @@ import ttu.ttu_appathon.teacher.CreateCourse;
 import ttu.ttu_appathon.teacher.Teacher;
 
 public class MainActivity extends AppCompatActivity {
-    AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
+    AlphaAnimation buttonClickxx = new AlphaAnimation(1F, 0.8F);
     Button selectTeacher;
 
     @Override
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
     public void studentButton(View view) {
+        view.startAnimation(buttonClickxx);
 //        Student student = new Student(MainActivity.this);
 //
 //        int pin = 9206;
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void teacherButton(View view) {
-        view.startAnimation(buttonClick);
+        view.startAnimation(buttonClickxx);
 
         Intent createIntent = new Intent(this, CreateCourse.class);
 //        teacher.createCourseSurvey();

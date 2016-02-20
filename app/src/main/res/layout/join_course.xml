@@ -3,18 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_centerHorizontal="true"
     android:gravity="center">
 
         <EditText
             android:id="@+id/join_id"
-            android:layout_width="300dp"
+            android:layout_width="80dp"
             android:layout_height="50dp"
+            android:textAlignment="center"
+            android:inputType="number"
+            android:maxLength="4"
 
             android:hint="Enter the Course ID" />
 
         <Button
             style="@style/ButtonStyle"
             android:id="@+id/join_course"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="150dp"
+
             android:onClick="joinCourse"
             android:text="Join Course" />
 </LinearLayout>

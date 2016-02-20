@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Toast;
 
 import ttu.ttu_appathon.R;
@@ -11,7 +12,6 @@ import ttu.ttu_appathon.database.Course;
 import ttu.ttu_appathon.student.Respond;
 
 public class CreateCourse extends AppCompatActivity {
-
     Teacher teacher;
 
     @Override
@@ -30,7 +30,7 @@ public class CreateCourse extends AppCompatActivity {
         Course course = teacher.createCourse();
         if (course != null){
             teacher.setCourse(course);
-            Toast.makeText(CreateCourse.this, "Course INSERTED: "+teacher.getCourse().getId_course(), Toast.LENGTH_LONG).show();
+//            Toast.makeText(CreateCourse.this, "Course INSERTED: "+teacher.getCourse().getId_course(), Toast.LENGTH_LONG).show();
             Intent askIntent = new Intent(this, AskQuestion.class);
             CreateCourse.this.startActivity(askIntent);
         }else{

@@ -66,7 +66,7 @@ public class AskQuestion extends AppCompatActivity {
 
         if (question != null){
             teacher.setQuestion(question);
-            Toast.makeText(AskQuestion.this, "Question INSERTED: " + teacher.getQuestion().getId_question(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(AskQuestion.this, "Question INSERTED: " + teacher.getQuestion().getId_question(), Toast.LENGTH_LONG).show();
 
 
             labelYes.setVisibility(View.VISIBLE);
@@ -106,7 +106,6 @@ public class AskQuestion extends AppCompatActivity {
     }
 
     public void updateVotes(){
-        Toast.makeText(AskQuestion.this, "update!", Toast.LENGTH_SHORT).show();
         if(teacher.collectResponces()){
             numberYes.setText(String.valueOf(teacher.getCount_yes()));
             numberNo.setText(String.valueOf(teacher.getCount_no()));

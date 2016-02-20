@@ -220,10 +220,10 @@ public class Teacher {
         ConnectivityManager connMgr = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
-            Toast.makeText(activity, "ok!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(activity, "ok!", Toast.LENGTH_LONG).show();
             return true;
         } else {
-            Toast.makeText(activity, "connectivy issue", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "connectivity issue", Toast.LENGTH_LONG).show();
             return false;
         }
 

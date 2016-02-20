@@ -13,9 +13,13 @@
 
     <Button
         android:id="@+id/select_teacher"
+        android:height="100dp"
         style="@style/ButtonStyle"
         android:onClick="teacherButton"
-        android:text="Teacher" />
+        android:text="Teacher"
+        android:layout_margin="50dp"
+
+        />
 
     <Button
         android:id="@+id/select_student"

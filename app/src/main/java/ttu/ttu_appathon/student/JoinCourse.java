@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.AlphaAnimation;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,7 +14,6 @@ import android.widget.Toast;
 import ttu.ttu_appathon.R;
 
 public class JoinCourse extends AppCompatActivity {
-
     Student student;
 
     @Override
@@ -29,14 +29,15 @@ public class JoinCourse extends AppCompatActivity {
     }
 
     public void joinCourse(View view) {
-        TextView textView = ((TextView)findViewById(R.id.join_id));
+
+        TextView textView = ((TextView) findViewById(R.id.join_id));
         String inputId = textView.getText().toString();
         int i = Integer.parseInt(inputId);
-        if (student.logInToCourse(i)){
+        if (student.logInToCourse(i)) {
             Toast.makeText(JoinCourse.this, "PIN CORRECT", Toast.LENGTH_LONG).show();
             Intent respondIntent = new Intent(this, Respond.class);
             JoinCourse.this.startActivity(respondIntent);
-        }else{
+        } else {
             Toast.makeText(JoinCourse.this, "ERROR CODE", Toast.LENGTH_LONG).show();
         }
 
