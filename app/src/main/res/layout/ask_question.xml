@@ -11,6 +11,7 @@
         android:orientation="vertical">
 
         <Button
+            style="@style/ButtonStyle"
             android:id="@+id/ask_question"
             android:layout_width="200dp"
             android:layout_height="50dp"

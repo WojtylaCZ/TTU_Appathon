@@ -9,4 +9,8 @@
         <item name="android:windowBackground">@color/colorBackground</item>
     </style>
 
+    <style name="ButtonStyle">
+        <item name="android:background">@color/colorButton</item>
+    </style>
+
 </resources>
