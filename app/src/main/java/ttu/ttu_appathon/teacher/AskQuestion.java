@@ -35,6 +35,11 @@ public class AskQuestion extends AppCompatActivity {
 
     public void pollTheClass(View view) {
         tmp.getCourseId(PIN);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         tmp.createQuestion();
 
         try {
@@ -44,7 +49,11 @@ public class AskQuestion extends AppCompatActivity {
         }
 
         tmp.getQuestionId();
-
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         TextView tw =(TextView) findViewById(R.id.display_question);
         tw.setText("Quest. with id "+tmp.questionId);
 

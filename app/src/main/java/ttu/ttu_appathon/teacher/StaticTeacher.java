@@ -179,12 +179,16 @@ public class StaticTeacher {
 
             if (parsePINresponse) {
                 try {
+                    boolean done = false;
                     while (result.next()) {
                         courseId = Integer.valueOf(result.getInt("id_course"));
-                        Toast.makeText(activity, "course id" + String.valueOf(courseId) + " done.", Toast.LENGTH_LONG).show();
+                        done = true;
+                        Toast.makeText(activity, "got course id" + String.valueOf(courseId) + ".", Toast.LENGTH_LONG).show();
                     }
-                    Toast.makeText(activity, "No such course! " + courseId, Toast.LENGTH_LONG).show();
-
+                    if (done) {
+                    } else {
+                        Toast.makeText(activity, "No such course! " + courseId, Toast.LENGTH_LONG).show();
+                    }
 
                 } catch (SQLException e) {
                     e.printStackTrace();
