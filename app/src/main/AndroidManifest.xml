@@ -9,7 +9,7 @@
 
         android:allowBackup="true"
         android:icon="@drawable/ttu3"
-        android:label="Raider Poll"
+        android:label="Student Lecture Poll"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
